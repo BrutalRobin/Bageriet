@@ -1,0 +1,14 @@
+<ng-template [ngIf]="clickCounter < 1" [ngIfElse]="sent">
+<fieldset>
+  <input placeholder="Titel" type="text" tabindex="1" required autofocus [(ngModel)]="name" #titel name="titel" value="">
+</fieldset>
+<fieldset>
+  <input placeholder="Titel" type="text" tabindex="2" required #comment name="comment" value="" >
+</fieldset>
+<button name="submit" type="submit" id="contact-submit" data-submit="...Sending" (click)="login(titel.value , comment.value)">Submit</button>
+</ng-template>
+
+<ng-template #sent>
+  <p><strong>{{name}}</strong></p>
+  <p>du er nu logget ind</p>
+</ng-template>

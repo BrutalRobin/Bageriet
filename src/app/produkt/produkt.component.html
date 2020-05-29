@@ -1,0 +1,41 @@
+
+<div id="produktgrid">
+<div class="path"> <span routerLink="/forside" class="link"> Produkter ></span> {{produkt.title}}</div>
+<h2>{{ produkt.title}}</h2>
+<button class="semere">Like!</button>
+<div class="image"><img src="{{ produkt.image.fullpath}}" alt=""></div>
+<div class="teaser">{{ produkt.teaser}}</div>
+<div class="indgridenser">
+  <div class="titel">Indgredienser</div>
+<div *ngFor="let indgridiens of produkt.ingredients">
+  <div class="product">
+      <p class="indgri">{{ indgridiens.amount}}{{ indgridiens.unit_abbr}} {{ indgridiens.ingredient_title}}
+</p>
+  </div>
+</div>
+</div>
+<div class="beskrivelse">{{produkt.description}}</div>
+</div>
+<div id="commentfield">
+  <form id="contact" action="" method="post">
+    <fieldset>
+      <input placeholder="Titel" type="text" tabindex="1" required #titel name="titel" value="">
+    </fieldset>
+    <fieldset>
+      <textarea placeholder="Kommentar" tabindex="3" required #comment name="comment" value=""></textarea>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" (click)="sendcomment(titel.value , comment.value)">Submit</button>
+    </fieldset>
+  </form>
+</div>
+<div *ngFor="let comment of comments.posts; let i=index">
+  <div class="comment">
+   <div class="userimage"><img src="../../assets/headshot{{comment.user_id}}.jpg" alt="userimage"></div>
+    <div class="commenttext">
+    <p class="user"><strong>{{users.users[comment.user_id - 2].firstname}} {{users.users[comment.user_id -2].lastname}}</strong></p>
+    <p class="subject">{{comment.title}}</p>
+    <p class="text">{{comment.comment}}</p>
+  </div>
+</div>
+</div>
